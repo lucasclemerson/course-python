@@ -1,7 +1,17 @@
 delimitador = ':'
 caminho = 'dados.txt'
 
+def iniciar_arquivo ():
+	try:
+		a = open(caminho, 'rt')
+		a.close()
+	except FileNotFoundError:	
+		a = open(caminho, 'wt+')
+		a.close()	
+
+
 def listar ():
+	iniciar_arquivo ()
 	retorno = list()
 	with open(caminho, 'r', encoding='utf-8') as arquivo:
 		dados = arquivo.read()
@@ -19,6 +29,7 @@ def listar ():
 
 
 def cadastrar (lista=[]):
+	iniciar_arquivo ()
 	arquivo = open(caminho, 'a')
 	pessoas =  list()
 	
